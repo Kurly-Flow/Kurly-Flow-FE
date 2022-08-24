@@ -62,3 +62,6 @@ dependencies {
 ## Application Version
 - minSdk 23
 - targetSdk 31
+
+## API 명세서 (노션)
+- https://www.notion.so/API-47619fd5108f4d2eb9b9d480c4f6130e
