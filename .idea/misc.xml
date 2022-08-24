@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/kurlyflow/app/src/main/res/drawable/all_spinner_custom.xml" value="0.115" />
+        <entry key="..\:/kurlyflow/app/src/main/res/drawable/home_textview_border.xml" value="0.196" />
+        <entry key="..\:/kurlyflow/app/src/main/res/drawable/main_textview_border.xml" value="0.278" />
+        <entry key="..\:/kurlyflow/app/src/main/res/drawable/multipicking_progressbar_custom.xml" value="0.196" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout-land/activity_packinglogin.xml" value="0.4822916666666667" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_checkpacking.xml" value="0.3651041666666667" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_checkproduct.xml" value="0.22" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_choosepicking.xml" value="0.25" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_chooseregion.xml" value="0.22" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_chooseworkingplace.xml" value="0.25" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_end.xml" value="0.4036458333333333" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_endlogin.xml" value="0.32019927536231885" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_hrlogin.xml" value="0.33" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_manage.xml" value="0.3976449275362319" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_managerlogin.xml" value="0.25" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_managersignup.xml" value="0.3976449275362319" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_multipicking.xml" value="0.22" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_mypage.xml" value="0.33" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_packinglogin.xml" value="0.25" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_pickinglogin.xml" value="0.3976449275362319" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_scanqr.xml" value="0.25" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_workerattendance.xml" value="0.309375" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_workerrlogin.xml" value="0.30724417426545086" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_workersignup.xml" value="0.33" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/dialog_multipicking.xml" value="0.3582427536231884" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/fragment_attendance.xml" value="0.22" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/fragment_detailregion.xml" value="0.22" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/fragment_to.xml" value="0.22" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/hr_login_activity.xml" value="0.41938405797101447" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/item_attendance_recyclerview.xml" value="0.3976449275362319" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/item_checkproduct_recyclerview.xml" value="0.48233695652173914" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/item_end_recyclerview.xml" value="0.4036458333333333" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/item_home_recyclerview.xml" value="0.3976449275362319" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/item_manage_recyclerview.xml" value="0.3976449275362319" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/item_multipicking_recyclerview.xml" value="0.3976449275362319" />
+        <entry key="..\:/kurlyflow/app/src/main/res/menu/end_toolbar.xml" value="0.4036458333333333" />
+        <entry key="..\:/kurlyflow/app/src/main/res/menu/manage_bnav.xml" value="0.628125" />
+        <entry key="..\:/kurlyflow/app/src/main/res/menu/manage_toolbar.xml" value="0.365625" />
+        <entry key="..\:/kurlyflow/app/src/main/res/menu/packing_toolbar.xml" value="0.6317708333333333" />
+        <entry key="..\:/kurlyflow/app/src/main/res/menu/picking_toolbar.xml" value="0.33" />
+        <entry key="..\:/kurlyflow/app/src/main/res/menu/worker_toolbar.xml" value="0.309375" />
+        <entry key="..\:/kurlyflow/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.163" />
+        <entry key="..\:/kurlyflow/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.163" />
+        <entry key="..\:/kurlyflow/app/src/main/res/xml/network_security_config.xml" value="0.32019927536231885" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

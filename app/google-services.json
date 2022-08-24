@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "964817579195",
+    "project_id": "kurly-flow-call",
+    "storage_bucket": "kurly-flow-call.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964817579195:android:1afd9eee6ee7b508374d9e",
+        "android_client_info": {
+          "package_name": "com.example.kurlyflow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "964817579195-okcars2p8f1i8gucj4l5cngfj8jhh70l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8HXkK4Raoy6XisON95tAMYVJETHvqHug"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "964817579195-okcars2p8f1i8gucj4l5cngfj8jhh70l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
