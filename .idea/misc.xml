@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/kurlyflow/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.179" />
         <entry key="..\:/kurlyflow/app/src/main/res/drawable/all_spinner_custom.xml" value="0.115" />
         <entry key="..\:/kurlyflow/app/src/main/res/drawable/home_textview_border.xml" value="0.196" />
         <entry key="..\:/kurlyflow/app/src/main/res/drawable/main_textview_border.xml" value="0.278" />

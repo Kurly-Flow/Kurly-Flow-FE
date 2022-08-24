@@ -116,7 +116,7 @@ class MultiPickingActivity : AppCompatActivity() {
         binding.textviewMultipickingDetaillocate.text = "위치: " + batches[position].location
         Glide.with(applicationContext).load(batches[position].imageUrl)
             .into(binding.imageviewMultipickingImage)
-        binding.textviewMultipickingTitle.text = "상품" + batches[position].name
+        binding.textviewMultipickingTitle.text = "상품: " + batches[position].name
         binding.textviewMultipickingCount.text =
             "수량: $nowCount/" + batches[position].quantity + " EA"
         if (position < batches.size - 1)
@@ -201,7 +201,7 @@ class MultiPickingActivity : AppCompatActivity() {
                 var data = inToteNameList.toArray(arrayOfNulls<String>(inToteNameList.size))
                 val selectedItemIndex = ArrayList<Int>()
                 val builder = AlertDialog.Builder(this)
-                builder.setMessage("옮길 상품을 모두 고른 후 확인을 눌러주세요")
+                builder.setTitle("옮길 상품을 모두 고른 후 확인을 눌러주세요")
                     .setMultiChoiceItems(
                         data,
                         null,
@@ -225,6 +225,7 @@ class MultiPickingActivity : AppCompatActivity() {
                                 this@MultiPickingActivity.toteId = toteId
                                 val request =
                                     MoveProductsToNewToteRequest(oldToteId, toteId, moveIdList)
+                                Log.d("TAGG", request.toString())
                                 PickingService.moveProductsToNewToteRequest(
                                     WorkingLoginSharedPreference.getUserAccessToken(
                                         "picking",
@@ -243,6 +244,7 @@ class MultiPickingActivity : AppCompatActivity() {
                                                 "토트 옮겨담기를 완료했습니다.",
                                                 Toast.LENGTH_SHORT
                                             ).show()
+                                            binding.textviewMultipickingTote.text = "현재 토트: $toteId"
                                         } else {
                                             Toast.makeText(
                                                 applicationContext,
@@ -304,7 +306,6 @@ class MultiPickingActivity : AppCompatActivity() {
         }
         val weight = batches[invoiceCount].weight
         totalWeight += weight
-        Toast.makeText(applicationContext, totalWeight.toString(), Toast.LENGTH_LONG).show()
         if (totalWeight >= 8000) {
             val builder = AlertDialog.Builder(this@MultiPickingActivity)
             builder.setMessage("중량이 8kg를 초과했습니다.\n토트가 가득 찼다면 새 토트 등록 버튼을 눌러주세요.")

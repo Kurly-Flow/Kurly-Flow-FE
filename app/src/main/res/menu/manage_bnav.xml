@@ -5,7 +5,7 @@
     <item android:id="@+id/attendance"
         android:title="출결"/>
     <item android:id="@+id/detail_region"
-        android:title="세부권역할당"/>
+        android:title="세부권역"/>
     <item android:id="@+id/to"
         android:title="TO관리"/>
 </menu>

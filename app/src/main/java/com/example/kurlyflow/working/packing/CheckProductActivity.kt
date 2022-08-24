@@ -12,11 +12,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kurlyflow.R
-import com.example.kurlyflow.working.WorkingLoginSharedPreference
 import com.example.kurlyflow.databinding.ActivityCheckproductBinding
 import com.example.kurlyflow.hr.worker.model.MyPageModel
 import com.example.kurlyflow.hr.worker.service.WorkerCallService
 import com.example.kurlyflow.hr.worker.service.WorkerMyPageService
+import com.example.kurlyflow.working.WorkingLoginSharedPreference
 import com.example.kurlyflow.working.end.EndLoginActivity
 import com.example.kurlyflow.working.packing.model.PackingModel
 import com.example.kurlyflow.working.packing.model.PackingProductModel
@@ -33,7 +33,7 @@ class CheckProductActivity : AppCompatActivity() {
     lateinit var products: ArrayList<PackingProductModel>
     lateinit var packingModel: PackingModel
     lateinit var worker: MyPageModel
-    private var invoiceId = "1"
+    private var invoiceId = "123-434-545"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCheckproductBinding.inflate(layoutInflater)
@@ -60,11 +60,15 @@ class CheckProductActivity : AppCompatActivity() {
                     binding.buttonCheckproductSubmit.text = "품목 검수 완료 - " + worker.name
                     binding.textviewCheckproductDetailregion.text =
                         worker.region + " " + worker.detailRegion
+                } else {
+                    Toast.makeText(applicationContext, "작업자 정보 조회를 실패했습니다", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
 
             override fun onFailure(call: Call<MyPageModel>, t: Throwable) {
                 Log.d("TAGme", t.localizedMessage)
+                Toast.makeText(applicationContext, "작업자 정보 조회를 실패했습니다", Toast.LENGTH_SHORT).show()
             }
 
         })
@@ -91,11 +95,15 @@ class CheckProductActivity : AppCompatActivity() {
                         products = arrayListOf()
                         products = packingModel.products
                         initRecyclerView()
+                    } else {
+                        Toast.makeText(applicationContext, "목록 조회를 실패했습니다", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
 
                 override fun onFailure(call: Call<PackingModel>, t: Throwable) {
                     Log.d("TAGple", t.localizedMessage)
+                    Toast.makeText(applicationContext, "목록 조회를 실패했습니다", Toast.LENGTH_SHORT).show()
                 }
 
             })
@@ -154,7 +162,7 @@ class CheckProductActivity : AppCompatActivity() {
                     .setPositiveButton("확인", DialogInterface.OnClickListener { dialog, _ ->
                         Toast.makeText(this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
                         WorkingLoginSharedPreference.clearUserAccessToken("packing", this)
-                        startActivity(Intent(this, EndLoginActivity::class.java))
+                        startActivity(Intent(this, PackingLoginActivity::class.java))
                         finish()
                     })
                     .setNegativeButton("취소", DialogInterface.OnClickListener { dialog, _ ->
@@ -251,9 +259,13 @@ class CheckProductActivity : AppCompatActivity() {
                                 call: Call<String>,
                                 response: Response<String>
                             ) {
-                                Log.d("TAGw", response.body()+response.code())
-                                if (response.code() == 200){
-                                    Toast.makeText(applicationContext, "메인 데스크로 옮겨주세요.", Toast.LENGTH_SHORT)
+                                Log.d("TAGw", response.body() + response.code())
+                                if (response.code() == 200) {
+                                    Toast.makeText(
+                                        applicationContext,
+                                        "메인 데스크로 옮겨주세요.",
+                                        Toast.LENGTH_SHORT
+                                    )
                                         .show()
                                     readyToScan()
                                 }

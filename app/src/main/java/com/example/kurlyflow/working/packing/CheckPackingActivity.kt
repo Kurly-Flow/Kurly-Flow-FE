@@ -11,11 +11,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kurlyflow.R
-import com.example.kurlyflow.working.WorkingLoginSharedPreference
 import com.example.kurlyflow.databinding.ActivityCheckpackingBinding
 import com.example.kurlyflow.hr.worker.model.MyPageModel
 import com.example.kurlyflow.hr.worker.service.WorkerCallService
 import com.example.kurlyflow.hr.worker.service.WorkerMyPageService
+import com.example.kurlyflow.working.WorkingLoginSharedPreference
 import com.example.kurlyflow.working.end.EndLoginActivity
 import com.example.kurlyflow.working.packing.model.PackingModel
 import com.example.kurlyflow.working.packing.model.PackingProductModel
@@ -65,11 +65,14 @@ class CheckPackingActivity : AppCompatActivity() {
                     binding.buttonCheckpackingSubmit.text = "포장 검수 완료 - " + worker.name
                     binding.textviewCheckpackingDetailregion.text =
                         worker.region + " " + worker.detailRegion
+                } else {
+                    Toast.makeText(applicationContext, "목록 조회를 실패했습니다", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<MyPageModel>, t: Throwable) {
                 Log.d("TAGme", t.localizedMessage)
+                Toast.makeText(applicationContext, "목록 조회를 실패했습니다", Toast.LENGTH_SHORT).show()
             }
 
         })
@@ -147,7 +150,7 @@ class CheckPackingActivity : AppCompatActivity() {
                             "packing",
                             applicationContext
                         )
-                        startActivity(Intent(applicationContext, EndLoginActivity::class.java))
+                        startActivity(Intent(applicationContext, PackingLoginActivity::class.java))
                         finish()
                     })
                     .setNegativeButton("취소", DialogInterface.OnClickListener { dialog, _ ->
