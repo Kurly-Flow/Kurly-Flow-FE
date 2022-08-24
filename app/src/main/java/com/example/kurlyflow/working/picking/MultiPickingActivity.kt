@@ -46,6 +46,7 @@ class MultiPickingActivity : AppCompatActivity() {
     private var totalCount = 0
     private var totalWeight: Double = 0.0
     private var toteId = ""
+    private var weightFlag = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -120,7 +121,7 @@ class MultiPickingActivity : AppCompatActivity() {
         binding.textviewMultipickingCount.text =
             "수량: $nowCount/" + batches[position].quantity + " EA"
         if (position < batches.size - 1)
-            binding.textviewMultipickingNext.text = "다음 상품:" + batches[position + 1].name
+            binding.textviewMultipickingNext.text = "다음 상품: " + batches[position + 1].name
         else
             binding.textviewMultipickingNext.text = "다음 상품: 없음"
     }
@@ -134,6 +135,9 @@ class MultiPickingActivity : AppCompatActivity() {
                     this@MultiPickingActivity.toteId = toteId
                     binding.textviewMultipickingTote.text = "현재 토트: $toteId"
                     totalWeight = 0.0
+                    weightFlag = false
+                    inToteIdList.clear()
+                    inToteNameList.clear()
                 }
 
             })
@@ -224,7 +228,7 @@ class MultiPickingActivity : AppCompatActivity() {
                             override fun onClicked(toteId: String) {
                                 this@MultiPickingActivity.toteId = toteId
                                 val request =
-                                    MoveProductsToNewToteRequest(oldToteId, toteId, moveIdList)
+                                    MoveProductsToNewToteRequest(pickingModel.batchId, oldToteId, toteId, moveIdList)
                                 Log.d("TAGG", request.toString())
                                 PickingService.moveProductsToNewToteRequest(
                                     WorkingLoginSharedPreference.getUserAccessToken(
@@ -306,13 +310,31 @@ class MultiPickingActivity : AppCompatActivity() {
         }
         val weight = batches[invoiceCount].weight
         totalWeight += weight
-        if (totalWeight >= 8000) {
+        if (totalWeight >= 8000 && !weightFlag) {
             val builder = AlertDialog.Builder(this@MultiPickingActivity)
-            builder.setMessage("중량이 8kg를 초과했습니다.\n토트가 가득 찼다면 새 토트 등록 버튼을 눌러주세요.")
+            builder.setMessage("중량이 8kg를 초과했습니다.\n새 토트를 등록하시겠습니까?")
                 .setPositiveButton(
-                    "확인",
-                    DialogInterface.OnClickListener { dialog, _ ->
-                        dialog.cancel()
+                    "네",
+                    DialogInterface.OnClickListener { dialogInterface, _ ->
+                        weightFlag = false
+                        dialogInterface.cancel()
+                        val dialog = CustomDialog(this)
+                        dialog.showDialog()
+                        dialog.setOnClickListener(object : CustomDialog.OnDialogClickListener {
+                            override fun onClicked(toteId: String) {
+                                this@MultiPickingActivity.toteId = toteId
+                                binding.textviewMultipickingTote.text = "현재 토트: $toteId"
+                                totalWeight = 0.0
+                                inToteIdList.clear()
+                                inToteNameList.clear()
+                            }
+                        })
+                    })
+                .setNegativeButton(
+                    "아니요",
+                    DialogInterface.OnClickListener { dialogInterface, _ ->
+                        weightFlag = true
+                        dialogInterface.cancel()
                     })
             builder.show()
         }

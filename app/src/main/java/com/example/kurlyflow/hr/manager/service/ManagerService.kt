@@ -22,7 +22,7 @@ interface ManagerService {
     fun postTo(@Header("Authorization") token: String, @Body request: SaveToRequest): Call<String>
 
     @POST("/api/admins/assignment")
-    fun postRegionAssignment(@Header("Authorization") token: String): Call<String>
+    fun tmp(@Header("Authorization") token: String): Call<String>
 
     @GET("/api/admins/attendance")
     fun getWorkerAttendance(@Header("Authorization") token: String): Call<ArrayList<AttendanceModel>>
@@ -43,8 +43,8 @@ interface ManagerService {
             return ApiClient.create(ManagerService::class.java).postTo(token, request)
         }
 
-        fun requestRegionAssignment(token: String): Call<String> {
-            return ApiClient.create(ManagerService::class.java).postRegionAssignment(token)
+        fun tmpppp(token: String): Call<String> {
+            return ApiClient.create(ManagerService::class.java).tmp(token)
         }
 
         fun getWorkerAttendance(token: String): Call<ArrayList<AttendanceModel>> {

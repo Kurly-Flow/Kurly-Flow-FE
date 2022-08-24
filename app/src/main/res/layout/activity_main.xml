@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:padding="10dp"
-        android:text="실제 사용 시 어플리케이션이 각 파트마다\n개별적으로 구햔되어 있는 것으로 기획했습니다."
+        android:text="실제 사용 시 어플리케이션이 각 파트마다\n개별적으로 구현되어 있는 것으로 기획했습니다."
         android:textColor="@color/black"
         android:textSize="16dp" />
 
@@ -62,7 +62,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/main_textview_border"
         android:gravity="center"
-        android:text="앤드"
+        android:text="엔드"
         android:textColor="@color/white"
         android:textSize="20dp" />
 

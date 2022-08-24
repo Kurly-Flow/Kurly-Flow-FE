@@ -21,7 +21,7 @@
         <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_manage.xml" value="0.3976449275362319" />
         <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_managerlogin.xml" value="0.25" />
         <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_managersignup.xml" value="0.3976449275362319" />
-        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_multipicking.xml" value="0.22" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_multipicking.xml" value="0.33" />
         <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_mypage.xml" value="0.33" />
         <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_packinglogin.xml" value="0.25" />
         <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_pickinglogin.xml" value="0.3976449275362319" />
@@ -33,7 +33,7 @@
         <entry key="..\:/kurlyflow/app/src/main/res/layout/fragment_attendance.xml" value="0.22" />
         <entry key="..\:/kurlyflow/app/src/main/res/layout/fragment_detailregion.xml" value="0.22" />
         <entry key="..\:/kurlyflow/app/src/main/res/layout/fragment_home.xml" value="0.33" />
-        <entry key="..\:/kurlyflow/app/src/main/res/layout/fragment_to.xml" value="0.22" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/fragment_to.xml" value="0.33" />
         <entry key="..\:/kurlyflow/app/src/main/res/layout/hr_login_activity.xml" value="0.41938405797101447" />
         <entry key="..\:/kurlyflow/app/src/main/res/layout/item_attendance_recyclerview.xml" value="0.3976449275362319" />
         <entry key="..\:/kurlyflow/app/src/main/res/layout/item_checkproduct_recyclerview.xml" value="0.48233695652173914" />

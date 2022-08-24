@@ -19,7 +19,6 @@ import com.example.kurlyflow.R
 import com.example.kurlyflow.databinding.FragmentToBinding
 import com.example.kurlyflow.hr.manager.request.SaveToRequest
 import com.example.kurlyflow.hr.manager.service.ManagerService
-import com.example.kurlyflow.hr.worker.WorkerLoginActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -79,13 +78,11 @@ class ToFragment : Fragment(R.layout.fragment_to) {
         }
 
         binding.buttonToSetregion.setOnClickListener {
-            ManagerService.requestRegionAssignment(
-                ManagerLoginSharedPreference.getUserAccessToken(
-                    requireContext()
-                )
+            ManagerService.tmpppp(
+                ManagerLoginSharedPreference.getUserAccessToken(requireContext())
             ).enqueue(object : Callback<String> {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
-                    Log.d("TAGr", response.code().toString())
+                    Log.d("TAGr", response.body()+response.code().toString()+response.errorBody())
                     if (response.code() == 200) {
                         Toast.makeText(
                             requireContext(),
@@ -166,7 +163,6 @@ class ToFragment : Fragment(R.layout.fragment_to) {
                     binding.spinnerToTime.getItemAtPosition(position).toString()
                 if (selected != "선택"){
                     selectedSpinner = selected.split(" ")[0]
-                    Toast.makeText(requireContext(), selectedSpinner, Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -222,7 +218,7 @@ class ToFragment : Fragment(R.layout.fragment_to) {
                             Toast.makeText(requireContext(), "로그아웃 되었습니다.", Toast.LENGTH_SHORT)
                                 .show()
                             ManagerLoginSharedPreference.clearUserInfo(requireContext())
-                            startActivity(Intent(requireContext(), WorkerLoginActivity::class.java))
+                            startActivity(Intent(requireContext(), ManagerLoginActivity::class.java))
                             requireActivity().finish()
                         })
                         .setNegativeButton("취소", DialogInterface.OnClickListener { dialog, _ ->

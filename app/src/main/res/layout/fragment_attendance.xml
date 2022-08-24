@@ -45,7 +45,7 @@
             android:gravity="left"
             android:text="근무지 출결 현황"
             android:textColor="@color/black"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
 
         <View
             android:layout_width="match_parent"
@@ -96,8 +96,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_attendance"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="70dp"
+            android:layout_height="400dp"
+            android:layout_marginBottom="10dp"
             tools:listitem="@layout/item_manage_recyclerview" />
 
         <Button

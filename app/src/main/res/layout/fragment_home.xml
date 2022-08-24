@@ -45,7 +45,7 @@
             android:gravity="left"
             android:text="작업자 현황"
             android:textColor="@color/black"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
 
         <View
             android:layout_width="match_parent"
@@ -97,7 +97,6 @@
             android:id="@+id/recyclerview_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="70dp"
             tools:listitem="@layout/item_manage_recyclerview" />
     </LinearLayout>
 </LinearLayout>

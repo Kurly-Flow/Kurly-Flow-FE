@@ -47,7 +47,7 @@ class ChooseRegionActivity : AppCompatActivity() {
             regionModel
         ).enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
-                Log.d("TAGr", response.body() + response.code())
+                Log.d("TAGrrr", response.body() + response.code())
                 if (response.code() == 200) {
                     ManagerLoginSharedPreference.setUserRegion(applicationContext, region)
                     startActivity(Intent(applicationContext, ManageActivity::class.java))
