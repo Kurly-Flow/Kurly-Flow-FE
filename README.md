@@ -16,13 +16,13 @@
 5.  패킹 작업자는 2차 포장 대상 상품과, 포장재 종류를 시스템으로부터 안내받아, 오류 없이 2차 포장을 할 수 있다. 
 
 ## 스크린샷
-<img src="https://user-images.githubusercontent.com/35549958/186371052-3ebc5833-b2c3-4c08-985e-5787fe35baed.png" width="190px" ></img>
-<img src="https://user-images.githubusercontent.com/35549958/186371258-af46e96c-ddc6-4a7c-b43a-af7ee65909bc.png" width="190px" ></img>
-<img src="https://user-images.githubusercontent.com/35549958/186371276-c2935c5d-7de8-41c0-8f66-d6ab3992b9ce.png" width="190px" ></img>
-<img src="https://user-images.githubusercontent.com/35549958/186371300-b14a29d8-9a47-44ee-8529-1f9b20cb98d3.png" width="190px" ></img>
-<img src="https://user-images.githubusercontent.com/35549958/186371828-468945b7-f54e-4a7e-9bd3-04e6c548a182.png" width="190px" ></img>
-<img src="https://user-images.githubusercontent.com/35549958/186371368-b99501ff-a6a8-49f1-bb52-e6068969e488.png" width="500px" ></img>
-<img src="https://user-images.githubusercontent.com/35549958/186371382-d9dddd75-1384-442d-aa82-dc004e3e92be.png" width="500px" ></img>
+<img src="https://user-images.githubusercontent.com/35549958/186371052-3ebc5833-b2c3-4c08-985e-5787fe35baed.png" width="300px" ></img> 
+<img src="https://user-images.githubusercontent.com/35549958/186371258-af46e96c-ddc6-4a7c-b43a-af7ee65909bc.png" width="300px" ></img> 
+<img src="https://user-images.githubusercontent.com/35549958/186371276-c2935c5d-7de8-41c0-8f66-d6ab3992b9ce.png" width="300px" ></img> 
+<img src="https://user-images.githubusercontent.com/35549958/186371300-b14a29d8-9a47-44ee-8529-1f9b20cb98d3.png" width="300px" ></img> 
+<img src="https://user-images.githubusercontent.com/35549958/186371828-468945b7-f54e-4a7e-9bd3-04e6c548a182.png" width="300px" ></img> </br>
+<img src="https://user-images.githubusercontent.com/35549958/186371368-b99501ff-a6a8-49f1-bb52-e6068969e488.png" width="450px" ></img>
+<img src="https://user-images.githubusercontent.com/35549958/186371382-d9dddd75-1384-442d-aa82-dc004e3e92be.png" width="450px" ></img>
 
 ## Dependencies
 ```
@@ -62,3 +62,6 @@ dependencies {
 ## Application Version
 - minSdk 23
 - targetSdk 31
+
+## API 명세서 (노션)
+- https://www.notion.so/API-47619fd5108f4d2eb9b9d480c4f6130e
