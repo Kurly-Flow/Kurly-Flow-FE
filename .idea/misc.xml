@@ -8,6 +8,7 @@
         <entry key="..\:/kurlyflow/app/src/main/res/drawable/home_textview_border.xml" value="0.196" />
         <entry key="..\:/kurlyflow/app/src/main/res/drawable/main_textview_border.xml" value="0.278" />
         <entry key="..\:/kurlyflow/app/src/main/res/drawable/multipicking_progressbar_custom.xml" value="0.196" />
+        <entry key="..\:/kurlyflow/app/src/main/res/drawable/print_linearlayout_border.xml" value="0.1845" />
         <entry key="..\:/kurlyflow/app/src/main/res/layout-land/activity_packinglogin.xml" value="0.4822916666666667" />
         <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_checkpacking.xml" value="0.3651041666666667" />
         <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_checkproduct.xml" value="0.22" />
@@ -30,6 +31,7 @@
         <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_workerrlogin.xml" value="0.30724417426545086" />
         <entry key="..\:/kurlyflow/app/src/main/res/layout/activity_workersignup.xml" value="0.33" />
         <entry key="..\:/kurlyflow/app/src/main/res/layout/dialog_multipicking.xml" value="0.3582427536231884" />
+        <entry key="..\:/kurlyflow/app/src/main/res/layout/dialog_print.xml" value="0.33" />
         <entry key="..\:/kurlyflow/app/src/main/res/layout/fragment_attendance.xml" value="0.22" />
         <entry key="..\:/kurlyflow/app/src/main/res/layout/fragment_detailregion.xml" value="0.22" />
         <entry key="..\:/kurlyflow/app/src/main/res/layout/fragment_home.xml" value="0.33" />

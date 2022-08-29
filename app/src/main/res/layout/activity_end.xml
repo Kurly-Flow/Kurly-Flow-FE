@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="호수 - 송장번호"
+                android:text="호수 (송장번호)"
                 android:textColor="@color/black"
                 android:textSize="16dp" />
 

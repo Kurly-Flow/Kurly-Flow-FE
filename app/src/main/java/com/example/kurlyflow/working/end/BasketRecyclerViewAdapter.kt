@@ -55,8 +55,8 @@ class BasketRecyclerViewAdapter(
     inner class Holder(private val binding: ItemEndRecyclerviewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: BasketModel) {
-            binding.textviewManage0.text = item.basketId.toString() + " - " + item.invoiceId
-            binding.textviewManage1.text = item.endAt.toString()
+            binding.textviewManage0.text = item.basketId.toString() + " (" + item.invoiceId+")"
+            binding.textviewManage1.text = item.endAt
         }
     }
 }

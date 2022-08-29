@@ -8,7 +8,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 
 object ApiClient {
     private const val BASE_URL =
-        "http://43.200.183.144:8080"
+        "http://15.164.210.132:8080"
 
     //HTTP 통신시 통신 정보를 인터셉트하여 로그로 출력
     private val okHttpClient = OkHttpClient.Builder()

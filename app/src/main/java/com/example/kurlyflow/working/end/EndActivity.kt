@@ -14,12 +14,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kurlyflow.R
-import com.example.kurlyflow.working.WorkingLoginSharedPreference
 import com.example.kurlyflow.databinding.ActivityEndBinding
 import com.example.kurlyflow.hr.worker.model.MyPageModel
 import com.example.kurlyflow.hr.worker.service.WorkerCallService
 import com.example.kurlyflow.hr.worker.service.WorkerMyPageService
+import com.example.kurlyflow.working.WorkingLoginSharedPreference
 import com.example.kurlyflow.working.end.model.BasketModel
+import com.example.kurlyflow.working.end.model.EndInvoiceModel
 import com.example.kurlyflow.working.end.model.EndProductModel
 import com.example.kurlyflow.working.end.service.EndService
 import com.google.android.gms.tasks.OnCompleteListener
@@ -28,12 +29,18 @@ import com.google.firebase.messaging.FirebaseMessaging
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class EndActivity : AppCompatActivity() {
     lateinit var binding: ActivityEndBinding
     lateinit var baskets: ArrayList<BasketModel>
     lateinit var products: ArrayList<EndProductModel>
     lateinit var worker: MyPageModel
+    lateinit var endInvoiceModel: EndInvoiceModel
+    private var ordererName = ""
+    private var ordererAddress = ""
+    private var invoiceId = ""
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,11 +70,15 @@ class EndActivity : AppCompatActivity() {
                     binding.textviewEndName.text = worker.name
                     binding.textviewEndRegion.text =
                         worker.region + " " + worker.detailRegion
+                } else {
+                    Toast.makeText(applicationContext, "작업자 정보를 불러오지 못했습니다.", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
 
             override fun onFailure(call: Call<MyPageModel>, t: Throwable) {
                 Log.d("TAGme", t.localizedMessage)
+                Toast.makeText(applicationContext, "작업자 정보를 불러오지 못했습니다.", Toast.LENGTH_SHORT).show()
             }
 
         })
@@ -82,10 +93,16 @@ class EndActivity : AppCompatActivity() {
                     if (response.code() == 200) {
                         val jsonArray = response.body()!!
                         baskets = arrayListOf()
+                        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
                         for (data in jsonArray) {
-                            var endAt = data.endAt.toString().replace("T", " ")
+                            var endAt = LocalDateTime.parse(data.endAt.replace("T", " "), formatter)
+                            endAt = endAt.plusHours(9)
                             val basket =
-                                BasketModel(data.basketId.toLong(), data.invoiceId, endAt)
+                                BasketModel(
+                                    data.basketId.toLong(),
+                                    data.invoiceId,
+                                    endAt.toString().replace("T", " ")
+                                )
                             baskets.add(basket)
                         }
                         initBasketRecyclerView()
@@ -116,7 +133,7 @@ class EndActivity : AppCompatActivity() {
                     BasketRecyclerViewAdapter.OnItemClickListener {
                     override fun onItemClick(v: View, item: BasketModel) {
                         binding.textviewEndSelected.text =
-                            "선택된 호수 - 송장 번호: " + item.basketId + " - " + item.invoiceId
+                            "선택된 호수 (송장 번호): " + item.basketId + " (" + item.invoiceId + ")"
 
                         EndService.getProductList(
                             WorkingLoginSharedPreference.getUserAccessToken(
@@ -124,15 +141,19 @@ class EndActivity : AppCompatActivity() {
                                 applicationContext,
                             ),
                             item.invoiceId.toString()
-                        ).enqueue(object : Callback<ArrayList<EndProductModel>> {
+                        ).enqueue(object : Callback<EndInvoiceModel> {
                             override fun onResponse(
-                                call: Call<ArrayList<EndProductModel>>,
-                                response: Response<ArrayList<EndProductModel>>
+                                call: Call<EndInvoiceModel>,
+                                response: Response<EndInvoiceModel>
                             ) {
                                 Log.d("TAGp", response.body().toString() + response.code())
                                 if (response.code() == 200) {
+                                    endInvoiceModel = response.body()!!
+                                    ordererName = endInvoiceModel.ordererName
+                                    ordererAddress = endInvoiceModel.ordererAddress
+                                    invoiceId = endInvoiceModel.invoiceId
                                     products = arrayListOf()
-                                    products = response.body()!!
+                                    products = endInvoiceModel.products
                                     initEndProductRecyclerView()
                                     binding.linearlayoutEndProducts.visibility = View.VISIBLE
                                 } else {
@@ -145,7 +166,7 @@ class EndActivity : AppCompatActivity() {
                             }
 
                             override fun onFailure(
-                                call: Call<ArrayList<EndProductModel>>,
+                                call: Call<EndInvoiceModel>,
                                 t: Throwable
                             ) {
                                 Log.d("TAGpe", t.localizedMessage)
@@ -175,15 +196,41 @@ class EndActivity : AppCompatActivity() {
     private fun initListener() {
         val builder = AlertDialog.Builder(this)
         binding.buttonEndPrintinvoice.setOnClickListener {
-            builder.setMessage("선택하신 송장을 재출력 하시겠습니까?")
-                .setPositiveButton("확인", DialogInterface.OnClickListener { dialog, _ ->
-                    Toast.makeText(applicationContext, "재출력을 시작합니다.", Toast.LENGTH_SHORT).show()
-                    dialog.cancel()
-                })
-                .setNegativeButton("취소", DialogInterface.OnClickListener { dialog, _ ->
-                    dialog.cancel()
-                })
-            builder.show()
+            if (binding.linearlayoutEndProducts.visibility == View.GONE) {
+                Toast.makeText(
+                    applicationContext,
+                    "선택하신 호수가 없습니다",
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
+            } else {
+                builder.setMessage("선택하신 송장을 재출력 하시겠습니까?")
+                    .setPositiveButton("확인", DialogInterface.OnClickListener { dialog, _ ->
+                        Toast.makeText(applicationContext, "재출력을 시작합니다.", Toast.LENGTH_SHORT).show()
+                        dialog.cancel()
+                        var productsString = ""
+                        products.forEachIndexed { index, product ->
+                            if (index != products.size - 1) {
+                                productsString += (product.name + "X" + product.quantity + ", ")
+                            } else {
+                                productsString += (product.name + "X" + product.quantity)
+                            }
+                        }
+                        Log.d("TAGprl", productsString)
+                        val printDialog = PrintDialog(
+                            this,
+                            ordererName,
+                            ordererAddress,
+                            invoiceId,
+                            productsString
+                        )
+                        printDialog.showDialog()
+                    })
+                    .setNegativeButton("취소", DialogInterface.OnClickListener { dialog, _ ->
+                        dialog.cancel()
+                    })
+                builder.show()
+            }
         }
     }
 
